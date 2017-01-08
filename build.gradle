@@ -1,0 +1,59 @@
+group 'online.pizzacrust'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = 'forge'
+            url = 'http://files.minecraftforge.net/maven'
+        }
+        maven {
+            name = 'sponge'
+            url = 'http://repo.spongepowered.org/maven'
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+        classpath 'org.spongepowered:mixingradle:0.4-SNAPSHOT'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'net.minecraftforge.gradle.liteloader'
+apply plugin: 'org.spongepowered.mixin'
+
+minecraft {
+    version = '1.11.2'
+    mappings = 'snapshot_nodoc_20170108'
+    runDir = 'run'
+}
+
+sourceSets {
+    main {
+        refMap = 'mixins.novous.refmap.json'
+    }
+}
+
+mixin {
+    defaultObfuscationEnv notch
+}
+
+litemod {
+    json {
+        name = "novous"
+        mcversion = "1.11.2"
+        mixinConfigs += "mixins.novous.refmap.json"
+    }
+}
+
+jar {
+    from litemod.outputs
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
