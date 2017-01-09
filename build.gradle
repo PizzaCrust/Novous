@@ -43,7 +43,7 @@ litemod {
     json {
         name = "novous"
         mcversion = "1.11.2"
-        mixinConfigs += "mixins.novous.refmap.json"
+        mixinConfigs += "mixins.novous.json"
     }
 }
 
