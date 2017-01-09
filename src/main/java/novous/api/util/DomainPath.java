@@ -57,4 +57,9 @@ public class DomainPath {
         return new DomainPath(domain, getPath());
     }
 
+    @Override
+    public String toString() {
+        return domain + ":" + path;
+    }
+
 }

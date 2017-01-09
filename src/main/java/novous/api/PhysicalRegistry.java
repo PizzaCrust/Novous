@@ -15,6 +15,17 @@ import novous.api.util.Registry;
  */
 public class PhysicalRegistry implements Registry<Physical> {
 
+    private static PhysicalRegistry CURRENT_INSTANCE;
+
+    public static PhysicalRegistry instance() {
+        if (CURRENT_INSTANCE == null) {
+            return new PhysicalRegistry();
+        }
+        return new PhysicalRegistry();
+    }
+
+    protected PhysicalRegistry() {}
+
     private final List<Physical> physicalEntries = new ArrayList<>();
 
     @Override
