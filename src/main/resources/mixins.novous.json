@@ -1,0 +1,7 @@
+{
+  "package": "novous.internal.mixin",
+  "refmap": "mixins.novous.refmap.json",
+  "mixins": [
+    "MixinModelBakery"
+  ]
+}
