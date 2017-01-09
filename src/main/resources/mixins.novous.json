@@ -1,8 +1,9 @@
 {
   "package": "novous.internal.mixin",
   "refmap": "mixins.novous.refmap.json",
+  "compatibilityLevel": "JAVA_8",
   "mixins": [
     "MixinModelBakery",
-    "MixinBlock"
+    "MixinMinecraft"
   ]
 }

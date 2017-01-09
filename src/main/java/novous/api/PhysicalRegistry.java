@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import novous.api.block.Block;
+import novous.api.block.BlockBase;
 import novous.api.block.Physical;
+import novous.api.util.DomainPath;
 import novous.api.util.Registry;
 
 /**
@@ -24,7 +26,8 @@ public class PhysicalRegistry implements Registry<Physical> {
         return new PhysicalRegistry();
     }
 
-    protected PhysicalRegistry() {}
+    protected PhysicalRegistry() { register(new BlockBase(new DomainPath("novous:test_block"),
+            new DomainPath("meow:meow"), "Test Block", 400));}
 
     private final List<Physical> physicalEntries = new ArrayList<>();
 

@@ -23,6 +23,9 @@ apply plugin: 'java'
 apply plugin: 'net.minecraftforge.gradle.liteloader'
 apply plugin: 'org.spongepowered.mixin'
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 minecraft {
     version = '1.11.2'
     mappings = 'snapshot_nodoc_20170108'
