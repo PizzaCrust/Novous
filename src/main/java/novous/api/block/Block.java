@@ -13,7 +13,7 @@ import novous.api.util.DomainPath;
  * @since 1.0-SNAPSHOT
  * @author PizzaCrust
  */
-public interface Block {
+public interface Block extends Physical {
 
     /**
      * Represents the textual name, or registry name to be used.
