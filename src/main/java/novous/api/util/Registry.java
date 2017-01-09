@@ -3,7 +3,7 @@ package novous.api.util;
 import java.util.List;
 
 /**
- * Represents a registry. A register is a key-to-value map wrapper and allows
+ * Represents a registry. A register is a key-to-value map wrapper/list and allows
  * other classes to determine a class is a registry/or not. Instead of having
  * a superclass of Object.
  *
