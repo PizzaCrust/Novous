@@ -28,7 +28,7 @@ public class PhysicalRegistry implements Registry<Physical> {
 
     protected PhysicalRegistry() {
         //register(new BlockBase(new DomainPath("novous:test_block"),
-        //    new DomainPath("meow:meow"), "Test Block", 400));
+        //    new DomainPath("minecraft:textures/blocks/iron_block.png"), "Test Block", 400));
     }
 
     private final List<Physical> physicalEntries = new ArrayList<>();
