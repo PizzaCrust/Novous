@@ -9,7 +9,11 @@ import net.minecraft.util.ResourceLocation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
+import java.io.IOException;
+
 import novous.api.PhysicalRegistry;
+import novous.api.mod.ModLoader;
 import novous.api.util.PairedRegistry;
 import novous.api.util.ResourceLinker;
 
@@ -57,11 +61,53 @@ public class Implementation {
     }
 
     /**
+     * Loads all the mods in the mods directory in Minecraft's data directory.
+     * @param logger
+     */
+    private static void handleModLoading(Logger logger) {
+        ModLoader.INSTANCE[0] = new SimpleModLoader();
+        ModLoader loader = ModLoader.INSTANCE[0];
+        File modsDir = new File(Minecraft.getMinecraft().mcDataDir, "novous-mods");
+        logger.info("Using " + modsDir.getAbsolutePath() + " as a mods directory for Novous!");
+        if (!modsDir.exists()) {
+            modsDir.mkdir();
+        }
+        logger.info("Loading mods in the directory...");
+        try {
+            loader.loadModDirectory(modsDir);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Handles mods when Minecraft reaches preInit()
+     * @param logger
+     */
+    private static void handleModPreInit(Logger logger) {
+        logger.info("Calling ModCallback::preInit()");
+        ModLoader loader = ModLoader.INSTANCE[0];
+        loader.getLoadedMods().forEach(modContainer -> modContainer.getModInstance().preInit());
+    }
+
+    /**
+     * Handles mods when Minecraft reaches init()
+     * @param logger
+     */
+    private static void handleModInit(Logger logger) {
+        logger.info("Calling ModCallback:init()");
+        ModLoader loader = ModLoader.INSTANCE[0];
+        loader.getLoadedMods().forEach(modContainer -> modContainer.getModInstance().init());
+    }
+
+    /**
      * Handles minecraft starting.
      */
     public static void handleMinecraftStart() {
         Logger novousStart = LogManager.getLogger("NovousStart");
         novousStart.info("Reached Implementation::handleMinecraftStart()");
+        handleModLoading(novousStart);
+        handleModPreInit(novousStart);
         handleBlockRegistration(novousStart);
     }
 
@@ -72,6 +118,7 @@ public class Implementation {
         Logger novousInit = LogManager.getLogger("NovousInit");
         novousInit.info("Reached Implementation::handleMinecraftInit()");
         handleResourceManager(novousInit);
+        handleModInit(novousInit);
     }
 
 }

@@ -17,8 +17,11 @@ public interface ModLoader {
     /**
      * Represents the instance of the {@link ModLoader}. Implementations
      * fill this field when an ModLoader is initialised.
+     *
+     * Array is to avoid final in interfaces. Access [0] in the array
+     * to access the instance.
      */
-    ModLoader INSTANCE = null;
+    ModLoader[] INSTANCE = new ModLoader[1];
 
     /**
      * Loads the specified mod file
