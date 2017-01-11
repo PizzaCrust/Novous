@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Represents a mod annotation that declares a mod's metadata.
+ * Represents a required mod annotation that declares a mod's metadata.
  *
  * @since 1.0-SNAPSHOT
  * @author PizzaCrust

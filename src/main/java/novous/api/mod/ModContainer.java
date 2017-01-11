@@ -17,6 +17,11 @@ public class ModContainer {
         modMetadata = clazz.getAnnotation(ModMetadata.class);
     }
 
+    public ModContainer(ModCallback callback, ModMetadata modMetadata) {
+        this.instance = callback;
+        this.modMetadata = modMetadata;
+    }
+
     public ModMetadata getModMetadata() {
         return modMetadata;
     }
