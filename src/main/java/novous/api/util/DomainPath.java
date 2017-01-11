@@ -62,4 +62,12 @@ public class DomainPath {
         return domain + ":" + path;
     }
 
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof DomainPath)) {
+            return false;
+        }
+        return this.toString().equals(object.toString());
+    }
+
 }

@@ -17,7 +17,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class BlockBase implements Block.Mutable {
 
     private DomainPath registryPath;
-    private DomainPath texturePath;
 
     private String unlocalizedName;
 
@@ -25,10 +24,9 @@ public class BlockBase implements Block.Mutable {
 
     public BlockBase(){}
 
-    public BlockBase(DomainPath registryPath, DomainPath texturePath, String unlocalizedName,
+    public BlockBase(DomainPath registryPath, String unlocalizedName,
                      int numericalId) {
         this.setRegistryPath(registryPath);
-        this.setTexturePath(texturePath);
         this.setUnlocalizedName(unlocalizedName);
         this.setNumericalId(numericalId);
     }
@@ -36,11 +34,6 @@ public class BlockBase implements Block.Mutable {
     @Override
     public DomainPath getRegistryPath() {
         return this.registryPath;
-    }
-
-    @Override
-    public DomainPath getTexturePath() {
-        return this.texturePath;
     }
 
     @Override
@@ -57,12 +50,6 @@ public class BlockBase implements Block.Mutable {
     public void setRegistryPath(DomainPath domainPath) {
         checkNotNull(domainPath);
         this.registryPath = domainPath;
-    }
-
-    @Override
-    public void setTexturePath(DomainPath domainPath) {
-        checkNotNull(domainPath);
-        this.texturePath = domainPath;
     }
 
     @Override

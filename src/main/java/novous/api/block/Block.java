@@ -23,14 +23,6 @@ public interface Block extends Physical {
     DomainPath getRegistryPath();
 
     /**
-     * Represents the texture's path inside of the current mod's JAR.
-     * Implementations should process every JAR's resources instead of having assigned
-     * an JAR identifier.
-     * @return
-     */
-    DomainPath getTexturePath();
-
-    /**
      * Represents the unlocalized, or default name to be used when a language file is not provided
      * /given inside of the mod.
      * @return
@@ -53,7 +45,6 @@ public interface Block extends Physical {
     interface Mutable extends Block {
 
         void setRegistryPath(DomainPath domainPath);
-        void setTexturePath(DomainPath domainPath);
         void setUnlocalizedName(String domainPath);
         void setNumericalId(int domainPath);
 
