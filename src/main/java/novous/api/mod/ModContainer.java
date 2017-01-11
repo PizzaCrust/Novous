@@ -1,26 +1,27 @@
 package novous.api.mod;
 
 /**
- * Represents a container that holds an Mod's Metadata, {@link Mod}, and the Mod's instance.
+ * Represents a container that holds an Mod's Metadata, {@link ModMetadata}, and the Mod's
+ * instance.
  *
  * @since 1.0-SNAPSHOT
  * @author PizzaCrust
  */
 public class ModContainer {
 
-    private final Object instance;
-    private final Mod mod;
+    private final ModCallback instance;
+    private final ModMetadata modMetadata;
 
     public ModContainer(Class<?> clazz) throws Exception {
-        instance = clazz.newInstance();
-        mod = clazz.getAnnotation(Mod.class);
+        instance = (ModCallback) clazz.newInstance();
+        modMetadata = clazz.getAnnotation(ModMetadata.class);
     }
 
-    public Mod getModMetadata() {
-        return mod;
+    public ModMetadata getModMetadata() {
+        return modMetadata;
     }
 
-    public Object getModInstance() {
+    public ModCallback getModInstance() {
         return instance;
     }
 
