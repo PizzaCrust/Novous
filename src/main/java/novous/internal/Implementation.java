@@ -100,12 +100,18 @@ public class Implementation {
         loader.getLoadedMods().forEach(modContainer -> modContainer.getModInstance().init());
     }
 
+    private static void handleLoggingImplementation(Logger logger) {
+        logger.info("Registering logging implementation...");
+        novous.api.util.Logger.Provider.INSTANCE[0] = new SimpleLoggerProvider();
+    }
+
     /**
      * Handles minecraft starting.
      */
     public static void handleMinecraftStart() {
         Logger novousStart = LogManager.getLogger("NovousStart");
         novousStart.info("Reached Implementation::handleMinecraftStart()");
+        handleLoggingImplementation(novousStart);
         handleModLoading(novousStart);
         handleModPreInit(novousStart);
         handleBlockRegistration(novousStart);
