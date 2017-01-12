@@ -64,5 +64,5 @@ dependencies {
 task apiJar(type: Jar) {
     baseName = 'NovousApi'
     from sourceSets.main.output.classesDir
-    include 'novous/api/*'
+    include 'novous/api/**'
 }
